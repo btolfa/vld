@@ -4,7 +4,7 @@
 #define MyAppName "Visual Leak Detector"
 #define MyAppVersion "2.5.1"
 #define MyAppPublisher "VLD Team"
-#define MyAppURL "http://vld.codeplex.com/"
+#define MyAppURL "https://kinddragon.github.io/vld/"
 #define MyAppRegKey "Software\Visual Leak Detector"
 
 [Setup]
@@ -38,7 +38,7 @@ WizardSmallImageFile=WizSmallImage.bmp
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Icons]
-Name: "{group}\View Documentation"; Filename: "http://vld.codeplex.com/documentation"
+Name: "{group}\View Documentation"; Filename: "https://github.com/KindDragon/vld/wiki"
 
 [Files]
 Source: "dbghelp\x64\dbghelp.dll"; DestDir: "{app}\bin\Win64"; Flags: ignoreversion
