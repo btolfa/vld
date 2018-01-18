@@ -72,10 +72,10 @@ Root: "HKLM32"; Subkey: "{#MyAppRegKey}"; ValueType: string; ValueName: "Install
 Root: "HKLM32"; Subkey: "{#MyAppRegKey}"; ValueType: string; ValueName: "InstallPath"; ValueData: "{app}"
 Root: "HKLM32"; Subkey: "{#MyAppRegKey}"; ValueType: string; ValueName: "IniFile"; ValueData: "{app}\vld.ini"
 
-Root: "HKLM64"; Subkey: "{#MyAppRegKey}"; Flags: uninsdeletekeyifempty
-Root: "HKLM64"; Subkey: "{#MyAppRegKey}"; ValueType: string; ValueName: "InstalledVersion"; ValueData: "{#MyAppVersion}"
-Root: "HKLM64"; Subkey: "{#MyAppRegKey}"; ValueType: string; ValueName: "InstallPath"; ValueData: "{app}"
-Root: "HKLM64"; Subkey: "{#MyAppRegKey}"; ValueType: string; ValueName: "IniFile"; ValueData: "{app}\vld.ini"
+Root: "HKLM64"; Subkey: "{#MyAppRegKey}"; Flags: uninsdeletekeyifempty; Check: IsWin64 
+Root: "HKLM64"; Subkey: "{#MyAppRegKey}"; ValueType: string; ValueName: "InstalledVersion"; ValueData: "{#MyAppVersion}"; Check: IsWin64 
+Root: "HKLM64"; Subkey: "{#MyAppRegKey}"; ValueType: string; ValueName: "InstallPath"; ValueData: "{app}"; Check: IsWin64 
+Root: "HKLM64"; Subkey: "{#MyAppRegKey}"; ValueType: string; ValueName: "IniFile"; ValueData: "{app}\vld.ini"; Check: IsWin64 
 
 [Code]
 type
