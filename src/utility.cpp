@@ -505,7 +505,7 @@ BOOL PatchImport (HMODULE importmodule, moduleentry_t *patchModule)
             IMAGE_DIRECTORY_ENTRY_IMPORT, &size, &section);
     }
 
-    if (idte == NULL) || (idte->OriginalFirstThunk == 0)) {
+    if ((idte == NULL) || (idte->OriginalFirstThunk == 0)) {
         // This module has no IDT (i.e. it imports nothing).
         return FALSE;
     }
