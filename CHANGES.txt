@@ -1,7 +1,16 @@
-Visual Leak Detector (VLD) Version 2.5.1
+Visual Leak Detector (VLD) Version 2.5.2
 
 
   Change Log / Release Notes
+
+2.5.2 (30 January 2018)
+----------------------------
+  Enhancements:
+  + VS2017 support added.
+
+  Bugs Fixed:
+  + Fix #10586 VLD interferes with GetLastError().
+  + Fix GitHub issue 38, Installation of 2.5.1 on 32-bit Windows 7 fails 
 
 2.5.1 (30 January 2017)
 ----------------------------
