@@ -2,9 +2,9 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Visual Leak Detector"
-#define MyAppVersion "2.5.1"
+#define MyAppVersion "2.5.2"
 #define MyAppPublisher "VLD Team"
-#define MyAppURL "http://vld.codeplex.com/"
+#define MyAppURL "https://kinddragon.github.io/vld/"
 #define MyAppRegKey "Software\Visual Leak Detector"
 
 [Setup]
@@ -25,7 +25,7 @@ LicenseFile=license-free.txt
 OutputBaseFilename=vld-{#MyAppVersion}-setup
 Compression=lzma
 SolidCompression=True
-MinVersion=0,5.01
+MinVersion=0,6.00
 ; Tell Windows Explorer to reload the environment
 ChangesEnvironment=yes
 AllowNoIcons=yes
@@ -38,19 +38,19 @@ WizardSmallImageFile=WizSmallImage.bmp
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Icons]
-Name: "{group}\View Documentation"; Filename: "http://vld.codeplex.com/documentation"
+Name: "{group}\View Documentation"; Filename: "https://github.com/KindDragon/vld/wiki"
 
 [Files]
 Source: "dbghelp\x64\dbghelp.dll"; DestDir: "{app}\bin\Win64"; Flags: ignoreversion
-Source: "dbghelp\x64\Microsoft.DTfW.DHL.manifest"; DestDir: "{app}\bin\Win64"; Flags: ignoreversion
+Source: "dbghelp\x64\Microsoft.Windows.DebuggersAndTools.manifest"; DestDir: "{app}\bin\Win64"; Flags: ignoreversion
 Source: "dbghelp\x86\dbghelp.dll"; DestDir: "{app}\bin\Win32"; Flags: ignoreversion
-Source: "dbghelp\x86\Microsoft.DTfW.DHL.manifest"; DestDir: "{app}\bin\Win32"; Flags: ignoreversion
-Source: "..\src\bin\Win32\Release-v140\vld.lib"; DestDir: "{app}\lib\Win32"; Flags: ignoreversion
-Source: "..\src\bin\Win32\Release-v140\vld_x86.dll"; DestDir: "{app}\bin\Win32"; Flags: ignoreversion
-Source: "..\src\bin\Win32\Release-v140\vld_x86.pdb"; DestDir: "{app}\bin\Win32"; Flags: ignoreversion
-Source: "..\src\bin\x64\Release-v140\vld.lib"; DestDir: "{app}\lib\Win64"; Flags: ignoreversion
-Source: "..\src\bin\x64\Release-v140\vld_x64.dll"; DestDir: "{app}\bin\Win64"; Flags: ignoreversion
-Source: "..\src\bin\x64\Release-v140\vld_x64.pdb"; DestDir: "{app}\bin\Win64"; Flags: ignoreversion
+Source: "dbghelp\x86\Microsoft.Windows.DebuggersAndTools.manifest"; DestDir: "{app}\bin\Win32"; Flags: ignoreversion
+Source: "..\src\bin\Win32\Release-v141\vld.lib"; DestDir: "{app}\lib\Win32"; Flags: ignoreversion
+Source: "..\src\bin\Win32\Release-v141\vld_x86.dll"; DestDir: "{app}\bin\Win32"; Flags: ignoreversion
+Source: "..\src\bin\Win32\Release-v141\vld_x86.pdb"; DestDir: "{app}\bin\Win32"; Flags: ignoreversion
+Source: "..\src\bin\x64\Release-v141\vld.lib"; DestDir: "{app}\lib\Win64"; Flags: ignoreversion
+Source: "..\src\bin\x64\Release-v141\vld_x64.dll"; DestDir: "{app}\bin\Win64"; Flags: ignoreversion
+Source: "..\src\bin\x64\Release-v141\vld_x64.pdb"; DestDir: "{app}\bin\Win64"; Flags: ignoreversion
 Source: "..\src\vld.h"; DestDir: "{app}\include"; Flags: ignoreversion
 Source: "..\src\vld_def.h"; DestDir: "{app}\include"; Flags: ignoreversion
 Source: "..\vld.ini"; DestDir: "{app}"; Flags: ignoreversion
@@ -61,7 +61,7 @@ Source: "..\COPYING.txt"; DestDir: "{app}"; Flags: ignoreversion
 [Tasks]
 Name: "modifypath"; Description: "Add VLD directory to your environmental path"
 Name: "modifyVS2008Props"; Description: "Add VLD directory to VS 2008"
-Name: "modifyVS2010Props"; Description: "Add VLD directory to VS 2010 - VS 2015"
+Name: "modifyVS2010Props"; Description: "Add VLD directory to VS 2010 - VS 2017"
 
 [ThirdParty]
 UseRelativePaths=True
@@ -72,10 +72,10 @@ Root: "HKLM32"; Subkey: "{#MyAppRegKey}"; ValueType: string; ValueName: "Install
 Root: "HKLM32"; Subkey: "{#MyAppRegKey}"; ValueType: string; ValueName: "InstallPath"; ValueData: "{app}"
 Root: "HKLM32"; Subkey: "{#MyAppRegKey}"; ValueType: string; ValueName: "IniFile"; ValueData: "{app}\vld.ini"
 
-Root: "HKLM64"; Subkey: "{#MyAppRegKey}"; Flags: uninsdeletekeyifempty
-Root: "HKLM64"; Subkey: "{#MyAppRegKey}"; ValueType: string; ValueName: "InstalledVersion"; ValueData: "{#MyAppVersion}"
-Root: "HKLM64"; Subkey: "{#MyAppRegKey}"; ValueType: string; ValueName: "InstallPath"; ValueData: "{app}"
-Root: "HKLM64"; Subkey: "{#MyAppRegKey}"; ValueType: string; ValueName: "IniFile"; ValueData: "{app}\vld.ini"
+Root: "HKLM64"; Subkey: "{#MyAppRegKey}"; Flags: uninsdeletekeyifempty; Check: IsWin64 
+Root: "HKLM64"; Subkey: "{#MyAppRegKey}"; ValueType: string; ValueName: "InstalledVersion"; ValueData: "{#MyAppVersion}"; Check: IsWin64 
+Root: "HKLM64"; Subkey: "{#MyAppRegKey}"; ValueType: string; ValueName: "InstallPath"; ValueData: "{app}"; Check: IsWin64 
+Root: "HKLM64"; Subkey: "{#MyAppRegKey}"; ValueType: string; ValueName: "IniFile"; ValueData: "{app}\vld.ini"; Check: IsWin64 
 
 [Code]
 type

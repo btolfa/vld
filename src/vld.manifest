@@ -1,25 +1,12 @@
-<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
-<assembly xmlns='urn:schemas-microsoft-com:asm.v1' manifestVersion='1.0'>
-	  <trustInfo xmlns="urn:schemas-microsoft-com:asm.v3">
-      <security>
-          <requestedPrivileges>
-              <requestedExecutionLevel
-                  level="asInvoker"
-                  uiAccess="false"/>
-          </requestedPrivileges>
-      </security>
-  </trustInfo>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
   <assemblyIdentity type="win32" 
                     name="VLDTeam.VLD.VLD" 
                     version="2.5.2.0" 
-                    processorArchitecture="x86" 
+                    processorArchitecture="*" 
+                    publicKeyToken="0000000000000000"
   />
 <description>Visual Leak Detector</description>
-  <dependency>
-    <dependentAssembly>
-      <assemblyIdentity type='win32' name='Microsoft.Windows.DebuggersAndTools' version='1.0.0.0' processorArchitecture='x86' />
-    </dependentAssembly>
-  </dependency>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1"> 
       <application> 
         <!--This Id value indicates the application supports Windows Vista functionality -->
@@ -33,5 +20,5 @@
         <!--This Id value indicates the application supports Windows 10 and Windows Server 2016 functionality-->
           <supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}"/>
       </application> 
-  </compatibility>  
+  </compatibility>
 </assembly>

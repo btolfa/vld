@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 //  Visual Leak Detector - Various Utility Functions
-//  Copyright (c) 2005-2014 VLD Team
+//  Copyright (c) 2005-2018 VLD Team
 //
 //  This library is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU Lesser General Public
@@ -505,7 +505,7 @@ BOOL PatchImport (HMODULE importmodule, moduleentry_t *patchModule)
             IMAGE_DIRECTORY_ENTRY_IMPORT, &size, &section);
     }
 
-    if (idte == NULL) {
+    if ((idte == NULL) || (idte->OriginalFirstThunk == 0)) {
         // This module has no IDT (i.e. it imports nothing).
         return FALSE;
     }
@@ -607,7 +607,7 @@ BOOL PatchImport (HMODULE importmodule, moduleentry_t *patchModule)
                             DbgReport(L"Hook dll \"%S\":\n",
                                 strrchr(pszBuffer, '\\') + 1);
                         }
-                        DbgReport(L"Import found %zu(\"%S\") for dll \"%S\".\n",
+                        DbgReport(L"Import found %Iu(\"%S\") for dll \"%S\".\n",
                             importname, patchModule->exportModuleName, importdllname);
                         break;
                     }
@@ -878,7 +878,7 @@ VOID RestoreImport (HMODULE importmodule, moduleentry_t* module)
                                 DbgReport(L"UnHook dll \"%S\" import %S!%S()\n",
                                     strrchr(pszBuffer, '\\') + 1, module->exportModuleName, importname);
                             } else {
-                                DbgReport(L"UnHook dll \"%S\" import %S!%zu()\n",
+                                DbgReport(L"UnHook dll \"%S\" import %S!%Iu()\n",
                                     strrchr(pszBuffer, '\\') + 1, module->exportModuleName, importname);
                             }
 #endif
