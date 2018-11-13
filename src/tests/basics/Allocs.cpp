@@ -31,7 +31,7 @@
 #define CRTDLLNAME   _T("msvcr110d.dll")
 #elif _MSC_VER == 1800	// VS 2013
 #define CRTDLLNAME   _T("msvcr120d.dll")
-#elif _MSC_VER == 1900	// VS 2015
+#elif _MSC_VER >= 1900	// VS 2015
 #define CRTDLLNAME   _T("ucrtbased.dll")
 #else
 #error Unsupported compiler
@@ -55,7 +55,7 @@
 #define CRTDLLNAME   _T("msvcr110.dll")
 #elif _MSC_VER == 1800	// VS 2013
 #define CRTDLLNAME   _T("msvcr120.dll")
-#elif _MSC_VER == 1900	// VS 2015
+#elif _MSC_VER >= 1900	// VS 2015
 #define CRTDLLNAME   _T("ucrtbase.dll")
 #else
 #error Unsupported compiler
@@ -115,11 +115,7 @@ static const int recursion = 3;
     return succeded ? ::testing::AssertionSuccess() : (::testing::AssertionSuccess() << resultStream.str());
 }
 
-#ifdef _WIN64
-static const TCHAR* sVld_dll = _T("vld_x64.dll");
-#else
-static const TCHAR* sVld_dll = _T("vld_x86.dll");
-#endif
+static const TCHAR* sVld_dll = _T("vld.dll");
 
 typedef const wchar_t*(*VldGetCallstack_func)(void* alloc, BOOL showInternalFrames);
 static VldGetCallstack_func VldInternalGetAllocationCallstack = NULL;

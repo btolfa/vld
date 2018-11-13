@@ -78,7 +78,7 @@ TEST_P(DynamicLoader, MultithreadLoadingTests)
     ASSERT_EQ(correctLeaks, leaks);
 }
 
-TEST_P(DynamicLoader, MfcLoaderTests)
+TEST_P(DynamicLoader, DISABLED_MfcLoaderTests)
 {
     HMODULE hmfcLib = LoadMFCTests();
     ASSERT_NE(0u, reinterpret_cast<UINT_PTR>(hmfcLib));
@@ -97,7 +97,7 @@ TEST_P(DynamicLoader, MfcLoaderTests)
     ASSERT_EQ(11, leaks);
 }
 
-TEST_P(DynamicLoader, MfcMultithreadLoadingTests)
+TEST_P(DynamicLoader, DISABLED_MfcMultithreadLoadingTests)
 {
     // Creates NUMTHREADS threads that each leaks 11 allocations
     DWORD start = GetTickCount();

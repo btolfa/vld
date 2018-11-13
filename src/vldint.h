@@ -49,11 +49,8 @@
 #define SELFTESTTEXTA       "Memory Leak Self-Test"
 #define SELFTESTTEXTW       L"Memory Leak Self-Test"
 #define VLDREGKEYPRODUCT    L"Software\\Visual Leak Detector"
-#ifndef WIN64
-#define VLDDLL				"vld_x86.dll"
-#else
-#define VLDDLL				"vld_x64.dll"
-#endif
+
+#define VLDDLL				"vld.dll"
 
 // The Visual Leak Detector APIs.
 extern "C" __declspec(dllexport) void VLDDisable ();
@@ -188,7 +185,7 @@ class CaptureContext {
 public:
     CaptureContext(void* func, context_t& context, BOOL debug = FALSE, BOOL ucrt = FALSE);
     ~CaptureContext();
-    __forceinline void Set(HANDLE heap, LPVOID mem, LPVOID newmem, SIZE_T size);
+    void Set(HANDLE heap, LPVOID mem, LPVOID newmem, SIZE_T size);
 private:
     // Disallow certain operations
     CaptureContext();
@@ -201,6 +198,7 @@ private:
     tls_t *m_tls;
     BOOL m_bFirst;
     const context_t& m_context;
+public:
 };
 
 class CallStack;
